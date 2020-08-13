@@ -1,0 +1,102 @@
+$accent: #F05F56;
+
+.site-header {
+  height: 3rem;
+  background-color: transparent;
+  box-shadow: 0 0 3px 0;
+
+  .k-button.k-outline.icon-only {
+    padding: .8rem;
+    border: none;
+    margin: 0.55rem 1rem;
+
+    span {
+      font-size: 2rem;
+      margin-top: .2rem;
+    }
+  }
+
+  .k-dropdown-button,
+  .k-button.k-outline {
+    border-radius: 1.5rem;
+    padding: .2rem 1rem;
+    margin: 0.6rem 1rem;
+    border: 2px solid;
+    font-weight: 600;
+    transition: border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  }
+
+  .k-dropdown-button:hover,
+  .k-button.k-outline:hover {
+    border-color: $accent;
+    color: $accent;
+    background-color: transparent;
+    background-image: none;
+  }
+
+  .k-button + .k-button {
+    margin-left: 0 !important;
+  }
+
+  .profile-popup {
+
+    kendo-popup {
+      box-shadow: none;
+
+      .k-popup {
+        border-radius: 1rem;
+        padding: 1rem;
+
+        .profile-content {
+          width: 10rem;
+
+          .k-upload {
+            border: none;
+            background: transparent;
+
+            .k-dropzone {
+              background: transparent;
+
+              .k-button {
+                color: $accent;
+                background: transparent;
+                border: none;
+              }
+
+              /*.k-button {
+                border-radius: 1.5rem;
+                padding: .2rem 1rem;
+                border: 2px solid;
+                font-weight: 600;
+                transition: border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+              }*/
+            }
+          }
+
+          .user-name {
+            margin-bottom: .5rem;
+          }
+
+          .user-profile-button {
+            margin-bottom: 1.5rem;
+          }
+          .user-profile-button:after {
+            display: block;
+            border-bottom: 1px solid #656565;
+            opacity: 1;
+            border-radius: 0;
+            margin-top: 2.5rem;
+          }
+
+          .prime-color {
+            color: $accent;
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}

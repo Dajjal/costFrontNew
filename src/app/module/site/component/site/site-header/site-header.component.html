@@ -1,0 +1,89 @@
+<div #navBar kendoTooltip id="site-header"
+     class="site-header d-flex justify-content-end fixed-top animate__animated animate__slideInDown">
+
+  <button kendoButton
+          class="icon-only animate__animated animate__flash"
+          icon="home"
+          title="Главное меню"
+          (click)="goMain()"
+          *ngIf="showHomeBtn"
+          [look]="'outline'">
+  </button>
+  <button kendoButton
+          class="icon-only animate__animated animate__flash"
+          icon="grid"
+          title="Панель управления"
+          routerLink="main"
+          *ngIf="showHomeBtn"
+          [look]="'outline'">
+  </button>
+  <div class="control-panel">
+
+  </div>
+
+  <button kendoButton
+          class="icon-only"
+          icon="info"
+          title="Руководство пользоателя"
+          (click)="onButtonClick()"
+          [look]="'outline'">
+  </button>
+  <button kendoButton
+          (click)="onButtonClick()"
+          [look]="'outline'">RU
+  </button>
+  <button kendoButton
+          #profileBtn
+          (click)="toggleProfile()"
+          [look]="'outline'">Профиль
+  </button>
+  <div class="profile-popup">
+    <kendo-popup #profilePopup
+                 [anchor]="profileBtn"
+                 (anchorViewportLeave)="showProfile = false"
+                 *ngIf="showProfile"
+                 [animate]="animatePopup"
+                 [anchorAlign]="{ horizontal: 'right', vertical: 'bottom' }"
+                 [popupAlign]="{ horizontal: 'right', vertical: 'top' }"
+                 [margin]="{ horizontal: 0 ,vertical: 10 }">
+      <div class="profile-content flex-center flex-column">
+        <kendo-avatar [imageSrc]="'https://via.placeholder.com/80'"
+                      width="80px"
+                      height="80px"
+                      [shape]="'circle'">
+        </kendo-avatar>
+        <kendo-upload [saveUrl]="uploadSaveUrl"
+                      [restrictions]="profilePhotoRules"
+                      [multiple]="false"
+                      [showFileList]="false">
+          <kendo-upload-messages [select]="'Изменить'"
+                                 dropFilesHere=""></kendo-upload-messages>
+        </kendo-upload>
+
+        <span class="user-name">Канат</span>
+
+        <button class="user-profile-button prime-color k-button k-button-flat"
+           (click)="openUserProfile()">Мой профиль</button>
+
+        <button class="prime-color k-button k-button-flat"
+                (click)="logout()">
+          Выход
+          <span class="k-icon k-i-logout ml-2"></span>
+        </button>
+      </div>
+    </kendo-popup>
+  </div>
+
+</div>
+
+<kendo-dialog title="Please confirm"
+              *ngIf="userProfileState"
+              (close)="closeUserProfile('cancel')"
+              [minWidth]="250"
+              [width]="450">
+  <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeUserProfile('no')">No</button>
+    <button kendoButton (click)="closeUserProfile('yes')" primary="true">Yes</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
